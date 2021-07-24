@@ -1,0 +1,31 @@
+﻿waitingpanel {
+    .playerPanel {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        justify-content: space-between;
+
+        height: 5px;
+        width: 100%;
+
+        .segment {
+            height: 100%;
+            width: 100%;
+
+            &.active {
+                background-color: rgba(#fff, 1);
+            }
+
+            &:not(.active) {
+                background: url(/ui/effect.png);
+                background-color: rgba(#fff, 0.1);
+            }
+
+            &:not(:first-child) {
+                margin-left: 5px;
+            }
+
+        }
+    }
+}

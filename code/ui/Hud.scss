@@ -1,0 +1,18 @@
+hud {
+    //border: 5px solid red;
+    height: 100%;
+    width: 100%;
+
+
+    & .hwinfo {
+        position: absolute;
+        bottom: 25px;
+        left: 25px;
+
+        min-width: 200px;
+
+
+        display: flex;
+        flex-direction: column;
+    }
+}

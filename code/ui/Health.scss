@@ -1,0 +1,24 @@
+﻿health {
+    width: 100%;
+    flex-direction: row;
+
+    & healthsegment {
+        background-color: rgba(#222, 0.5);
+        backdrop-filter: blur(25px);
+        margin-left: 2px;
+        height: 5px;
+        width: 40px;
+
+        & .segment {
+            //background-color: rgba( #666, 0.5);
+            position: absolute;
+            height: 100%;
+            left: 0px;
+            top: 0px;
+
+            &.linger {
+                background: url(/ui/effect.png);
+            }
+        }
+    }
+}
