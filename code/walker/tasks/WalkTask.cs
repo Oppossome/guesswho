@@ -40,10 +40,6 @@ namespace guesswho.walker.tasks
 		{
 			Vector3 currentTarget = Points[Points.Count - 1];
 
-			DebugOverlay.Line(currentTarget, Owner.Position, 0, false);
-			for (int i = Points.Count - 1; i > 0; i--)
-				DebugOverlay.Line(Points[i], Points[i - 1], 0, false);
-
 			if (Owner.Velocity.Length < 100)
 			{
 				if (stuckFor > 3)
