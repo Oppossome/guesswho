@@ -22,7 +22,8 @@ namespace guesswho.walker.tasks
 				return;
 			}
 
-			Vector3[] rawPoints = NavMesh.BuildPath(Owner.Position, dest);
+			Vector3? closestPoint = NavMesh.GetClosestPoint(Owner.Position);
+			Vector3[] rawPoints = NavMesh.BuildPath(closestPoint.Value, dest);
 			
 			if (rawPoints is null)
 			{
@@ -39,6 +40,10 @@ namespace guesswho.walker.tasks
 		{
 			Vector3 currentTarget = Points[Points.Count - 1];
 
+			DebugOverlay.Line(currentTarget, Owner.Position, 0, false);
+			for (int i = Points.Count - 1; i > 0; i--)
+				DebugOverlay.Line(Points[i], Points[i - 1], 0, false);
+
 			if (Owner.Velocity.Length < 100)
 			{
 				if (stuckFor > 3)
@@ -48,7 +53,7 @@ namespace guesswho.walker.tasks
 			else
 				stuckFor = 0;
 
-			if(Vector3.DistanceBetween(Owner.Position, currentTarget) > 32f)
+			if (Vector3.DistanceBetween(Owner.Position.WithZ(0), currentTarget.WithZ(0)) > 20f)
 			{
 				Vector3 direction = (currentTarget - (Owner.Position)).Normal.WithZ(0);
 				Vector3 avoid = GetAvoidance(direction, Owner.Position, 500);
@@ -61,7 +66,7 @@ namespace guesswho.walker.tasks
 				if (Points.Count == 0) 
 					Owner.CurrentTask = new SleepTask(Owner, 5, 13);
 			}
-			
+
 			return Vector3.Zero;
 		}
 

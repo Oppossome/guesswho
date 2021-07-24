@@ -36,7 +36,7 @@ namespace guesswho.weapons
 			ShootEffects();
 			PlaySound("rust_smg.shoot");
 
-			ShootBullet(.05f, 1.5f, 5.0f);
+			ShootBullet(.05f, 1.5f, 8.0f);
 		}
 
 		[ClientRpc]

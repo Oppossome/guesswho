@@ -6,48 +6,59 @@ using System.Collections.Generic;
 namespace guesswho
 {
 	public partial class Player : Sandbox.Player
-	{
+	{		
 		[Net]
-		public List<int> Skills { get; set; } = new();
-		
-		[Net, OnChangedCallback]
-		public BaseSkill ActiveSkill { get; set; }
+		public BaseSkill Skill { get; set; }
+
+		[Net]
+		public float SkillRecharge { get; set;}
 
 		public void SkillUse()
 		{
 			Host.AssertServer();
-
-			if (Skills.Count == 0)
-				return;
-
-			SkillEntry skill = SkillRegistry.Skills[0];
-			Skills.RemoveAt(0);
-
-			ActiveSkill = skill.Create();
-			ActiveSkill.OnUse(this);
+			Skill.OnUse(this);
 		}
 
-		public void SkillFinished()
+		public float SkillRechargeRate()
 		{
-			ActiveSkill = null;
-		}
+			if(LifeState == LifeState.Alive)
+			{
+				if(Team is not null)
+					return Team.SkillRechargeRate( this );
 
-		void OnActiveSkillChanged()
-		{
-			if (ActiveSkill is null) return;
-			ActiveSkill.OnUse(this);
+				return 10;
+			}
+
+
+			return 0;
 		}
 
 		public void SkillTick()
 		{
-			if(ActiveSkill is not null)
-			{
-				ActiveSkill.Tick();
+			float rechargeRate = SkillRechargeRate();
+
+			if (rechargeRate == 0)
 				return;
+
+			if (Skill is not null) { 
+				if(Skill.IsActive)
+				{
+					Skill.Tick();
+					return;
+				}
+			} else if(Host.IsServer)
+			{
+				SkillRecharge += rechargeRate * Time.Delta;
+
+				if(SkillRecharge >= 100)
+				{
+					Skill = new ShrinkSkill();
+					SkillRecharge = 0;
+				}
 			}
 
-			if (Input.Pressed(InputButton.Menu) && Host.IsServer)
-				SkillUse();
+			if (Input.Pressed(InputButton.Menu))
+				Skill?.OnUse(this);
 		}
 	}
 }

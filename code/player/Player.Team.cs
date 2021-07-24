@@ -25,7 +25,6 @@ namespace guesswho
 
 		private void OnplyTeamChanged()
 		{
-			Log.Info($"{plyTeam == lastTeam}");
 			Team = plyTeam;
 		}
 	}

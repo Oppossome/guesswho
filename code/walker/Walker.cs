@@ -46,7 +46,11 @@ namespace guesswho.walker
 			}
 			else
 			{
-				CurrentTask = new WalkTask(this);
+				int chance = Rand.Int(6);
+
+				CurrentTask = chance != 1 ? 
+					new WalkTask(this) :
+					new RunTask(this);
 			}
 
 			Move(Time.Delta);
@@ -56,6 +60,8 @@ namespace guesswho.walker
 
 		protected virtual void Move(float timeDelta)
 		{
+			DebugOverlay.Text(EyePos + Vector3.Up * 5, CurrentTask is not null ? CurrentTask.Name : "None");
+
 			BBox bbox = BBox.FromHeightAndRadius(64, 4);
 			MoveHelper move = new MoveHelper(Position, Velocity);
 			move.Trace = move.Trace.Ignore(this).Size(bbox.Mins, bbox.Maxs);

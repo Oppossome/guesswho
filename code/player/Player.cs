@@ -1,5 +1,6 @@
 ﻿using guesswho.animation;
 using guesswho.weapons;
+using guesswho.skills;
 using guesswho.player;
 using Sandbox;
 using System;
@@ -24,6 +25,7 @@ namespace guesswho
 		public override void Respawn()
 		{
 			SetModel("models/citizen/citizen.vmdl");
+			SkillRecharge = 0;
 
 			Animator = new StandardPlayerAnimator();
 			Controller = new Controller();
@@ -45,7 +47,7 @@ namespace guesswho
 
 			Game.CurrentRound?.OnPlayerRespawn(this);
 			Team?.OnPlayerRespawned(this);
-			Skills.Add(0);
+			Skill = new ShrinkSkill();
 		}
 
 		public override void CreateHull()
@@ -85,7 +87,8 @@ namespace guesswho
 		DamageInfo lastDamage;
 		public override void OnKilled()
 		{
-			ActiveSkill?.OnEnd();
+			if(Skill is not null && Skill.IsActive) Skill?.OnEnd();
+			Skill = null;
 
 			base.OnKilled();
 

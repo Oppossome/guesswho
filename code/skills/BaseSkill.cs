@@ -7,13 +7,15 @@ namespace guesswho.skills
 	public abstract partial class BaseSkill : NetworkComponent
 	{
 		public abstract float SkillDuration { get; }
+		public abstract Texture Icon { get; }
 		public abstract string Name { get; }
-		public abstract string Icon { get; }
+		public Player Owner;
 
 		[Net, Predicted]
 		public TimeSince SinceUsed { get; set; }
-		public Player Owner;
-		public bool IsActive;
+
+		[Net, Predicted]
+		public bool IsActive { get; set; }
 
 		public virtual void OnUse(Player owner) 
 		{
@@ -24,7 +26,7 @@ namespace guesswho.skills
 
 		public virtual void OnEnd()
 		{
-			Owner.SkillFinished();
+			Owner.Skill = null;
 		}
 
 		public virtual void Tick()

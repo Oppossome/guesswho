@@ -26,6 +26,11 @@ namespace guesswho.teams
 			Players.Remove(ply);
 		}
 
+		public virtual float SkillRechargeRate(Player ply)
+		{
+			return 0;
+		}
+
 		public virtual bool ShouldPlayerMove(Player ply) => true;
 		public virtual void OnPlayerRespawned(Player ply) { }
 		public virtual void OnPlayerDied(Player ply) { }

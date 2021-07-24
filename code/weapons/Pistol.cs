@@ -41,7 +41,7 @@ namespace guesswho.weapons
 			ShootEffects();
 			PlaySound("rust_pistol.shoot");
 
-			ShootBullet(0.02f, 1.5f, 9);
+			ShootBullet(0.02f, 1.5f, 12);
 		}
 	}
 }

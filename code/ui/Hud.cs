@@ -14,7 +14,5 @@ namespace guesswho.ui
 			StyleSheet.Load("/ui/Hud.scss");
 			SetTemplate("/ui/Hud.html");
 		}
-
-
 	}
 }
