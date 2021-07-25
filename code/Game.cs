@@ -24,7 +24,6 @@ namespace guesswho
 			_ = DoTicking();
 			if (Host.IsServer)
 			{
-				SetRound(new WaitingRound());
 				new HudEntity();
 				Hunters = new();
 				Hiders = new();
@@ -35,8 +34,13 @@ namespace guesswho
 		{
 			if (Host.IsServer)
 			{
-				//Entity.All.OfType<Prop>().ToList()
-					//.ForEach(x => x.Delete());
+				if (NavMesh.IsLoaded)
+				{
+					SetRound(new WaitingRound());
+				} else
+				{
+					SetRound(new ErrorRound());
+				}
 			}
 		}
 
