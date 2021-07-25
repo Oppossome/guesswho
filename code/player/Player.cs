@@ -47,7 +47,7 @@ namespace guesswho
 
 			Game.CurrentRound?.OnPlayerRespawn(this);
 			Team?.OnPlayerRespawned(this);
-			Skill = new ShrinkSkill();
+			Skill = BaseSkill.RandomSkill();
 		}
 
 		public override void CreateHull()

@@ -7,8 +7,7 @@ namespace guesswho.skills
 {
 	class ShrinkSkill : BaseSkill
 	{
-		public override Texture Icon => Texture.Load("/ui/weapons/dm_pistol.png");
-		public override float SkillDuration => 10;
+		public override float SkillDuration => 8;
 		public override string Name => "Shrink";
 
 		public override void OnEnd()
@@ -28,7 +27,8 @@ namespace guesswho.skills
 
 			float delta = Math.Clamp(SinceUsed / SkillDuration, 0, 1);
 			float scale = MathF.Sin(delta * MathF.PI) * 5;
-			Owner.Scale = Owner.Outfit.Height - Math.Clamp(scale, 0, 0.75f);
+			float height = Owner.Outfit.Height;	
+			Owner.Scale = Math.Clamp(height - scale, 0.55f, height);
 		}
 	}
 }

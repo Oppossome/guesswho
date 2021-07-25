@@ -43,6 +43,8 @@ namespace guesswho
 			localPly.RenderAlpha = Alpha;
 			foreach (ModelEntity ent in localPly.Children)
 				ent.RenderAlpha = Alpha;
+
+			localPly.Skill?.PostCamera();
 		}
 
 		public override void BuildInput(InputBuilder input)

@@ -7,7 +7,6 @@ namespace guesswho.skills
 	public abstract partial class BaseSkill : NetworkComponent
 	{
 		public abstract float SkillDuration { get; }
-		public abstract Texture Icon { get; }
 		public abstract string Name { get; }
 		public Player Owner;
 
@@ -33,6 +32,21 @@ namespace guesswho.skills
 		{
 			if(SinceUsed >= SkillDuration)
 				OnEnd();
+		}
+
+		public virtual void PostCamera() { }
+
+		public static BaseSkill RandomSkill()
+		{
+			switch(Rand.Int(1, 2))
+			{
+				case 1:
+					return new ShrinkSkill();
+				case 2:
+					return new InvisibilitySkill();
+			}
+
+			return new ShrinkSkill();
 		}
 	}
 }

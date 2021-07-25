@@ -72,6 +72,8 @@ namespace guesswho.player
 			float alpha = Math.Clamp((camDist - 45) / 26, 0, 1);
 			Viewer = (camDist < 16 ? spectating : null);
 			setAlpha(spectating, alpha);
+
+			spectating.Skill?.PostCamera();
 		}
 
 		public override void BuildInput(InputBuilder input)

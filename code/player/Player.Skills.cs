@@ -29,7 +29,6 @@ namespace guesswho
 				return 10;
 			}
 
-
 			return 0;
 		}
 
@@ -52,7 +51,7 @@ namespace guesswho
 
 				if(SkillRecharge >= 100)
 				{
-					Skill = new ShrinkSkill();
+					Skill = BaseSkill.RandomSkill();
 					SkillRecharge = 0;
 				}
 			}
