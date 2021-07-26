@@ -21,11 +21,12 @@ namespace guesswho.skills
 
 		}
 
-		public override void OnEnd()
+		public override void Reset()
 		{
-			base.OnEnd();
+			if (!IsActive)
+				return;
 
-			if(Host.IsServer)
+			if (Host.IsServer)
 				SetOwnerAlpha(1);
 		}
 

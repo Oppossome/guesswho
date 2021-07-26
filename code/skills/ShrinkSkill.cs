@@ -10,9 +10,10 @@ namespace guesswho.skills
 		public override float SkillDuration => 8;
 		public override string Name => "Shrink";
 
-		public override void OnEnd()
+		public override void Reset()
 		{
-			base.OnEnd();
+			if (!IsActive)
+				return;
 
 			if (Host.IsServer)
 				Owner.Scale = Owner.Outfit.Height;

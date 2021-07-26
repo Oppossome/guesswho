@@ -87,7 +87,7 @@ namespace guesswho
 		DamageInfo lastDamage;
 		public override void OnKilled()
 		{
-			if(Skill is not null && Skill.IsActive) Skill?.OnEnd();
+			if(Skill is not null && Skill.IsActive) Skill?.Reset();
 			Skill = null;
 
 			base.OnKilled();

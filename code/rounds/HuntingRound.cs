@@ -75,15 +75,15 @@ namespace guesswho.rounds
 					return;
 				}
 
-				if (Game.Instance.Hiders.LivingCount == 0)
-				{
-					teamWon(Game.Instance.Hunters);
-					return;
-				}
-
 				if (Game.Instance.Hunters.LivingCount == 0)
 				{
 					teamWon(Game.Instance.Hiders);
+					return;
+				}
+
+				if (Game.Instance.Hiders.LivingCount == 0)
+				{
+					teamWon(Game.Instance.Hunters);
 					return;
 				}
 

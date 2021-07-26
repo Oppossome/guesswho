@@ -2,6 +2,7 @@
 using Sandbox;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace guesswho.rounds
 {
@@ -34,10 +35,14 @@ namespace guesswho.rounds
 			ply.Team?.OnPlayerDied(ply);
 		}
 
+		public virtual void OnRoundEnd(){
+			RoundPanel?.Delete(true);
+			foreach(Player ply in Entity.All.OfType<Player>().ToList())
+				ply.Skill?.Reset();
+		}
+
 		public abstract void OnTick();
 		public virtual void OnRoundStart() { }
-		public virtual void OnRoundEnd() => RoundPanel?.Delete(true);
-
 		public virtual void OnPlayerLeft(Player ply) { }
 		public virtual void OnPlayerJoin(Player ply) => ply.Respawn();
 		public virtual bool CanPlayerDamage(Player ply, TraceResult tr) => false;

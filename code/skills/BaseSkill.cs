@@ -26,6 +26,7 @@ namespace guesswho.skills
 		public virtual void OnEnd()
 		{
 			Owner.Skill = null;
+			Reset();
 		}
 
 		public virtual void Tick()
@@ -34,19 +35,26 @@ namespace guesswho.skills
 				OnEnd();
 		}
 
+		public virtual void Reset() => Owner.Skill = null;
 		public virtual void PostCamera() { }
 
 		public static BaseSkill RandomSkill()
 		{
-			switch(Rand.Int(1, 2))
+			switch(Rand.Int(1, 3))
 			{
 				case 1:
 					return new ShrinkSkill();
 				case 2:
 					return new InvisibilitySkill();
+				case 3:
+					return new CrowdSkill();
+				case 4:
+					return new SwapSkill();
+				case 5:
+					return new SacraficeSkill();
+				default:
+					return new ShrinkSkill();
 			}
-
-			return new ShrinkSkill();
 		}
 	}
 }

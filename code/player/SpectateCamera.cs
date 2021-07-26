@@ -89,6 +89,9 @@ namespace guesswho.player
 				List<Player> livingPlayers = Entity.All.OfType<Player>()
 						.Where(x => x.LifeState == LifeState.Alive).ToList();
 
+				if (livingPlayers.Count == 0)
+					return;
+
 				int targetSlot = (livingPlayers.IndexOf(spectating) + mDirection) % livingPlayers.Count;
 				if (targetSlot == -1) targetSlot = livingPlayers.Count - 1;
 				Spectating = livingPlayers[targetSlot];

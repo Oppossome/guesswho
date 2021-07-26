@@ -13,6 +13,8 @@ namespace guesswho.ui
 			if (!Host.IsClient)
 				return;
 
+			RootPanel.AddChild <Scoreboard<ScoreboardEntry>>();
+			RootPanel.AddChild<VoiceList>();
 			RootPanel.AddChild<ChatBox>();
 			RootPanel.AddChild<Hud>();
 		}

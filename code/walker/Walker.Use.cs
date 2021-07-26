@@ -7,6 +7,23 @@ namespace guesswho.walker
 {
 	public partial class Walker : AnimEntity, IUse
 	{
+		public void SwapOutfits(Player ply)
+		{
+			Outfit walkerOutfit = new Outfit(ply, Outfit);
+			Outfit playerOutfit = new Outfit(this, ply.Outfit);
+
+			ply.Outfit.Clear();
+			ply.Outfit = walkerOutfit;
+			ply.Outfit.ApplyOutfit();
+
+			this.Outfit.Clear();
+			this.Outfit = playerOutfit;
+			this.Outfit.ApplyOutfit();
+
+			this.TakeDecalsFrom(ply);
+			ply.RemoveAllDecals();
+		}
+
 		TimeSince lastUse = 0;
 		bool IUse.OnUse(Entity user)
 		{
@@ -22,19 +39,7 @@ namespace guesswho.walker
 			if (!canUse)
 				return false;
 
-			Outfit walkerOutfit = new Outfit(ply, Outfit);
-			Outfit playerOutfit = new Outfit(this, ply.Outfit);
-
-			ply.Outfit.Clear();
-			ply.Outfit = walkerOutfit;
-			ply.Outfit.ApplyOutfit();
-
-			this.Outfit.Clear();
-			this.Outfit = playerOutfit;
-			this.Outfit.ApplyOutfit();
-
-			this.TakeDecalsFrom(ply);
-			ply.RemoveAllDecals();
+			SwapOutfits(ply);
 
 			return true;
 		}

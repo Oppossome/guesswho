@@ -83,6 +83,11 @@ namespace guesswho
 			base.ClientDisconnect(cl, reason);
 		}
 
+		public override void DoPlayerNoclip(Client player)
+		{
+			//base.DoPlayerNoclip(player);
+		}
+
 		private async Task DoTicking()
 		{
 			while (!Global.IsClosing)
