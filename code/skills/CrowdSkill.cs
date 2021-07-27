@@ -22,9 +22,12 @@ namespace guesswho.skills
 			{
 				Vector3? wPos = NavMesh.GetPointWithinRadius(Owner.Position, 50, 100);
 				
-				Walker nWalker = new();
-				nWalker.Position = wPos.Value;
-				walkers.Add(nWalker);
+				if(wPos is Vector3 rPos)
+				{
+					Walker nWalker = new();
+					nWalker.Position = rPos;
+					walkers.Add(nWalker);
+				}
 			}
 
 			Walker rWalker = walkers[Rand.Int(0, walkers.Count - 1)];

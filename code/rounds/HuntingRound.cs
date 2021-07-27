@@ -58,6 +58,9 @@ namespace guesswho.rounds
 				ply.TakeDamage(wDamage);
 			}
 
+			if (tr.Entity is Player tPly && tPly.Team is Hunters)
+				return false;
+
 			return true;
 		}
 
