@@ -18,7 +18,7 @@ namespace guesswho.ui
 
 		public WeaponList()
 		{
-			StyleSheet.Load("/ui/WeaponList.scss");
+			StyleSheet.Load("/ui/weaponlist/WeaponList.scss");
 			this.SetClass("hidden", true);
 		}
 

@@ -56,7 +56,6 @@ namespace guesswho.rounds
 					.WithAttacker(tr.Entity);
 					
 				ply.TakeDamage(wDamage);
-				return false;
 			}
 
 			return true;

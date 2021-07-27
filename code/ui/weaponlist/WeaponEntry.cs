@@ -29,7 +29,7 @@ namespace guesswho.ui
 			pBackground.Texture = Owner.Icon;
 
 			Style.Background = pBackground;
-			SetTemplate("/ui/WeaponEntry.html");
+			SetTemplate("/ui/weaponlist/WeaponEntry.html");
 		}
 
 		public override void Tick()
