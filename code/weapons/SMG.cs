@@ -7,7 +7,7 @@ namespace guesswho.weapons
 	public partial class SMG : BaseWeapon
 	{
 		public override string ViewModelPath => "weapons/rust_smg/v_rust_smg.vmdl";
-		public override Texture Icon => Texture.Load("/ui/weapons/dm_smg.png");
+		public override string Icon => "/ui/weapons/dm_smg.png";
 		public override int SlotLocation => 2;
 
 		public override float PrimaryRate => 15;

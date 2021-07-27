@@ -1,6 +1,7 @@
 ﻿using guesswho.animation;
 using guesswho.weapons;
 using guesswho.skills;
+using guesswho.ui;
 using guesswho.teams;
 using guesswho.player;
 using Sandbox;
@@ -9,7 +10,7 @@ using System.Collections.Generic;
 
 namespace guesswho
 {
-	public partial class Player : Sandbox.Player
+	public partial class Player : Sandbox.Player, INamed
 	{
 		public Outfit Outfit { get; set;}
 		CitizenAnimator npcAnim;
@@ -95,7 +96,7 @@ namespace guesswho
 				if(lastDamage.Attacker is Player ply && ply.LifeState == LifeState.Alive)
 					ply.Health = Math.Min(100, ply.Health + 20);
 
-
+			KillLog.AddEntry(lastDamage, this);
 			base.OnKilled();
 
 			TimeSinceDied = 0;
@@ -129,6 +130,11 @@ namespace guesswho
 			if (LifeState == LifeState.Alive)
 				if(Animator is null && npcAnim is not null)
 					npcAnim.Tick(Controller.WishVelocity, Velocity, Controller.HasTag("ducked"));
+		}
+
+		public string GetName()
+		{
+			return this.GetClientOwner().Name;
 		}
 	}
 }

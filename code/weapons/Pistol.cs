@@ -7,7 +7,7 @@ namespace guesswho.weapons
 	public partial class Pistol : BaseWeapon
 	{
 		public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
-		public override Texture Icon => Texture.Load("/ui/weapons/dm_pistol.png");
+		public override string Icon => "/ui/weapons/dm_pistol.png";
 		public override int SlotLocation => 1;
 
 		public override float PrimaryRate => 5;

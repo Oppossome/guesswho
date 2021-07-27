@@ -24,9 +24,9 @@ namespace guesswho.ui
 
 			PanelBackground pBackground = new PanelBackground();
 			pBackground.Repeat = BackgroundRepeat.NoRepeat;
+			pBackground.Texture = Texture.Load(Owner.Icon);
 			pBackground.SizeX = Length.Pixels(110);
 			pBackground.SizeY= Length.Pixels(110);
-			pBackground.Texture = Owner.Icon;
 
 			Style.Background = pBackground;
 			SetTemplate("/ui/weaponlist/WeaponEntry.html");

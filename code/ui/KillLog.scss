@@ -1,0 +1,41 @@
+﻿killlog {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  flex-direction: column;
+  align-items: flex-end;
+  height: 50%;
+  width: 25%;
+
+  killentry {
+    border: 1px solid rgba(white, 0.8);
+    background-color: rgba(#444, 0.6);
+    backdrop-filter: blur(5px);
+    right: -100%;
+
+    transition: all 0.5s ease-out;
+    align-items: center;
+    padding: 0 15px;
+    height: 46px;
+
+    &.active {
+      right: 0px;
+    }
+
+    & :not(:first-child) {
+      margin-left: 5px;
+    }
+
+    text {
+      font-family: Poppins;
+      font-size: 16px;
+      color: white;
+    }
+
+    image {
+      width: 46px;
+      height: 46px;
+    }
+  }
+}

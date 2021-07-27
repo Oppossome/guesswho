@@ -8,7 +8,7 @@ namespace guesswho.weapons
 {
 	public partial class BaseWeapon : Sandbox.BaseWeapon
 	{
-		public virtual Texture Icon { get; set; }
+		public virtual string Icon { get; set; }
 		public virtual int SlotLocation => -1;
 
 		public virtual float ReloadTime => 3;

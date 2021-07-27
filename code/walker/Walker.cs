@@ -1,5 +1,6 @@
-﻿using guesswho.animation;
-using guesswho.walker.tasks;
+﻿using guesswho.walker.tasks;
+using guesswho.animation;
+using guesswho.ui;
 using Sandbox;
 using System;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 
 namespace guesswho.walker
 {
-	public partial class Walker : AnimEntity
+	public partial class Walker : AnimEntity, INamed
 	{
 		public Outfit Outfit { get; set;}
 
@@ -123,6 +124,7 @@ namespace guesswho.walker
 			base.OnKilled();
 			LifeState = LifeState.Dead;
 			EnableAllCollisions = false;
+			KillLog.AddEntry(lastDamage, this);
 			EnableDrawing = false;
 
 			Ragdoll wRagdoll = new(this, lastDamage);
@@ -156,6 +158,11 @@ namespace guesswho.walker
 		{
 			Entity.All.OfType<Walker>().ToList()
 				.ForEach(walker => walker.Delete());
+		}
+
+		public string GetName()
+		{
+			return "Walker";
 		}
 	}
 }

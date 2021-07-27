@@ -7,7 +7,7 @@ namespace guesswho.weapons
 	public partial class Shotgun : BaseWeapon
 	{
 		public override string ViewModelPath => "weapons/rust_pumpshotgun/v_rust_pumpshotgun.vmdl";
-		public override Texture Icon => Texture.Load("/ui/weapons/dm_shotgun.png");
+		public override string Icon => "/ui/weapons/dm_shotgun.png";
 		public override int SlotLocation => 3;
 
 		public override float ReloadTime => .5f;
