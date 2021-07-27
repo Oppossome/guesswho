@@ -51,7 +51,11 @@ namespace guesswho.rounds
 		public override bool CanPlayerDamage(Player ply, TraceResult tr)
 		{
 			if (ply.Team is Hunters && tr.Entity is Walker) {
-				ply.TakeDamage(DamageInfo.Generic(10));
+				DamageInfo wDamage = DamageInfo.Generic(10)
+					.WithWeapon(ply.ActiveChild)
+					.WithAttacker(tr.Entity);
+					
+				ply.TakeDamage(wDamage);
 				return false;
 			}
 
