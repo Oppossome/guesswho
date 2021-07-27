@@ -1,6 +1,7 @@
 ﻿using guesswho.animation;
 using guesswho.weapons;
 using guesswho.skills;
+using guesswho.teams;
 using guesswho.player;
 using Sandbox;
 using System;
@@ -89,6 +90,11 @@ namespace guesswho
 		{
 			if(Skill is not null && Skill.IsActive) Skill?.Reset();
 			Skill = null;
+
+			if (Team is Hunters)
+				if(lastDamage.Attacker is Player ply && ply.LifeState == LifeState.Alive)
+					ply.Health = Math.Min(100, ply.Health + 20);
+
 
 			base.OnKilled();
 
