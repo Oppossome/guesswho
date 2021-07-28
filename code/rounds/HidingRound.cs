@@ -34,7 +34,8 @@ namespace guesswho.rounds
 				cPly.Respawn();
 			}
 
-			Walker.SpawnWalkers((players.Count - hunterCount) * Settings.BotsPerHider);
+			int botsToSpawn = (players.Count - hunterCount) * Settings.BotsPerHider;
+			Walker.SpawnWalkers(Math.Min(botsToSpawn, Settings.MaxBots));
 		}
 
 		public override void OnPlayerJoin(Player ply)

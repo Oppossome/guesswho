@@ -14,5 +14,8 @@ namespace guesswho
 
 		[ServerVar("gw_players-required", Help = "Players required to play the game")]
 		public static int PlayersRequired { get; set; } = 2;
+
+		[ServerVar("gw_max-bots")]
+		public static int MaxBots { get; set; } = 15;
 	}
 }
