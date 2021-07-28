@@ -34,6 +34,8 @@ namespace guesswho
 		{
 			if (Host.IsServer)
 			{
+				Entity.All.OfType<Prop>().ToList().ForEach((x) => x.Delete());
+
 				if (NavMesh.IsLoaded)
 				{
 					SetRound(new WaitingRound());

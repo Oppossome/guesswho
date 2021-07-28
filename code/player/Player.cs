@@ -47,11 +47,9 @@ namespace guesswho
 			Outfit = new Outfit(this);
 			Outfit.ApplyOutfit();
 
-
 			Game.CurrentRound?.OnPlayerRespawn(this);
-			Team?.OnPlayerRespawned(this);
 			Skill = BaseSkill.RandomSkill();
-			Transmit = TransmitType.Always;
+			Team?.OnPlayerRespawned(this);
 		}
 
 		public override void CreateHull()

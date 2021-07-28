@@ -21,9 +21,6 @@ namespace guesswho.ui
 			{
 				Owner = owner;
 				focus = Local.Pawn;
-
-				Add.Image($"avatar:{owner.GetClientOwner().SteamId}", "avatar");
-				iconPanel = Add.Panel("icon");
 			}
 
 			[Event("cam.focused")]
@@ -38,6 +35,17 @@ namespace guesswho.ui
 
 				if (!Owner.IsValid())
 					return;
+
+				if(iconPanel is null)
+				{
+					if(Owner.GetClientOwner() is not null)
+					{
+						Add.Image($"avatar:{Owner.GetClientOwner().SteamId}", "avatar");
+						iconPanel = Add.Panel("icon");
+					}
+
+					return;
+				}
 
 				iconPanel.SetClass("active", Owner.LifeState == LifeState.Dead);
 				iconPanel.SetClass("focused", focus == Owner);

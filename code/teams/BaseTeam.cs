@@ -15,14 +15,12 @@ namespace guesswho.teams
 		{
 			if (!Players.Contains(ply))
 			{
-				Log.Info($"{ply.GetClientOwner().Name} has joined team {Name}");
 				Players.Add(ply);
 			}
 		}
 
 		public void OnPlayerLeft(Player ply)
 		{
-			Log.Info($"{ply.GetClientOwner().Name} has left team {Name}");
 			Players.Remove(ply);
 		}
 
