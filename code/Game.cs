@@ -35,9 +35,8 @@ namespace guesswho
 			if (Host.IsServer)
 			{
 				Entity.All.OfType<Prop>().ToList().ForEach((x) => x.Delete());
-				string navPath = FileSystem.Data.GetFullPath(".");
 				
-				if (NavMesh.IsLoaded && navPath.Contains("steamapps"))
+				if (NavMesh.IsLoaded)
 				{
 					SetRound(new WaitingRound());
 				} else
