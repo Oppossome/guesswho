@@ -40,9 +40,9 @@ namespace guesswho
 			Alpha = Math.Clamp((camDist - AlphaEnd) / (AlphaStart - AlphaEnd), 0, 1);
 			Viewer = (camDist < AlphaEnd ? localPly : null);
 
-			localPly.RenderAlpha = Alpha;
+			localPly.RenderColor = localPly.RenderColor.WithAlpha(Alpha);
 			foreach (ModelEntity ent in localPly.Children)
-				ent.RenderAlpha = Alpha;
+				ent.RenderColor = ent.RenderColor.WithAlpha(Alpha);
 
 			localPly.Skill?.PostCamera();
 		}

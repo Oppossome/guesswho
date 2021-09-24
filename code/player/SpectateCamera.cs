@@ -40,9 +40,9 @@ namespace guesswho.player
 			if (ent is null || !ent.IsValid())
 				return;
 
-			ent.RenderAlpha = alpha;
+			ent.RenderColor = ent.RenderColor.WithAlpha(alpha);
 			foreach (ModelEntity child in ent.Children)
-				child.RenderAlpha = alpha;
+				child.RenderColor = child.RenderColor.WithAlpha(alpha);
 		}
 
 		public override void Update()
