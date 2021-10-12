@@ -15,10 +15,9 @@ namespace guesswho.skills
 		void SetOwnerAlpha(float alpha)
 		{
 			plyAlpha = alpha;
-			Owner.RenderAlpha = alpha;
+			Owner.RenderColor = Owner.RenderColor.WithAlpha(alpha);
 			foreach (ModelEntity child in Owner.Children)
-				child.RenderAlpha = alpha;
-
+				child.RenderColor = child.RenderColor.WithAlpha(alpha);
 		}
 
 		public override void Reset()
