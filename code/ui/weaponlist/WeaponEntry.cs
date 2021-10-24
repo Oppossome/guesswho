@@ -22,13 +22,11 @@ namespace guesswho.ui
 		{
 			Owner = weapon;
 
-			PanelBackground pBackground = new PanelBackground();
-			pBackground.Repeat = BackgroundRepeat.NoRepeat;
-			pBackground.Texture = Texture.Load(Owner.Icon);
-			pBackground.SizeX = Length.Pixels(110);
-			pBackground.SizeY= Length.Pixels(110);
+			Style.BackgroundImage = Texture.Load(Owner.Icon);
+			Style.BackgroundRepeat = BackgroundRepeat.NoRepeat;
+			Style.BackgroundSizeX = Length.Pixels(110);
+			Style.BackgroundSizeY = Length.Pixels(110);
 
-			Style.Background = pBackground;
 			SetTemplate("/ui/weaponlist/WeaponEntry.html");
 		}
 

@@ -13,7 +13,7 @@ namespace guesswho
 		public static Game Instance => Current as Game;
 		public static BaseRound CurrentRound => Instance.Round;
 		
-		[Net, OnChangedCallback] private BaseRound Round { get; set;}
+		[Net, Change] private BaseRound Round { get; set;}
 		
 		[Net] public Hunters Hunters { get; set;}
 		

@@ -134,7 +134,7 @@ namespace guesswho
 
 		public string GetName()
 		{
-			return this.GetClientOwner().Name;
+			return this.Client.Name;
 		}
 	}
 }

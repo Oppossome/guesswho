@@ -7,7 +7,7 @@ namespace guesswho
 {
 	public partial class Player : Sandbox.Player
 	{
-		[Net, OnChangedCallback] BaseTeam plyTeam { get; set; }
+		[Net, Change("OnTeamChanged")] BaseTeam plyTeam { get; set; }
 		BaseTeam lastTeam { get; set; }
 
 		public BaseTeam Team {
@@ -23,7 +23,7 @@ namespace guesswho
 			}
 		}
 
-		private void OnplyTeamChanged()
+		private void OnTeamChanged()
 		{
 			Team = plyTeam;
 		}

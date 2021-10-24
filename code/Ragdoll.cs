@@ -52,15 +52,15 @@ namespace guesswho
 		{
 			float alpha = 1 - Math.Clamp(Lifetime - 8, 0, 1);
 
-			if (RenderAlpha == alpha)
+			if (RenderColor.a == alpha)
 				return;
 			
-			RenderAlpha = alpha;
+			this.RenderColor = this.RenderColor.WithAlpha(alpha);
 
 			foreach (ModelEntity clothing in Children)
-				clothing.RenderAlpha = alpha;
+				clothing.RenderColor = clothing.RenderColor.WithAlpha(alpha);
 			
-			if(alpha == 0)
+			if (alpha == 0)
 				Delete();
 		}
 	}

@@ -38,9 +38,9 @@ namespace guesswho.ui
 
 				if(iconPanel is null)
 				{
-					if(Owner.GetClientOwner() is not null)
+					if(Owner.Client is not null)
 					{
-						Add.Image($"avatar:{Owner.GetClientOwner().SteamId}", "avatar");
+						Add.Image($"avatar:{Owner.Client.SteamId}", "avatar");
 						iconPanel = Add.Panel("icon");
 					}
 

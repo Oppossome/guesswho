@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace guesswho.skills
 {
-	public abstract partial class BaseSkill : NetworkComponent
+	public abstract partial class BaseSkill : BaseNetworkable
 	{
 		public abstract float SkillDuration { get; }
 		public abstract string Name { get; }

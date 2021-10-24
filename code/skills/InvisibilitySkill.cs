@@ -46,7 +46,7 @@ namespace guesswho.skills
 		{
 			if (!IsActive) return;
 			
-			if(Owner.RenderAlpha > plyAlpha)
+			if(Owner.RenderColor.a > plyAlpha)
 				SetOwnerAlpha(plyAlpha);
 		}
 	}

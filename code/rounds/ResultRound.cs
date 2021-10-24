@@ -13,7 +13,7 @@ namespace guesswho.rounds
 		public override string RoundName => "Result Round";
 		public override float RoundLength => 15;
 
-		[Net, OnChangedCallback]
+		[Net, Change]
 		public BaseTeam Winners { get; set;}
 
 		void OnWinnersChanged()

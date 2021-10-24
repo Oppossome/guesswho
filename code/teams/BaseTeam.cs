@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace guesswho.teams
 {
-	public abstract class BaseTeam : NetworkComponent
+	public abstract class BaseTeam : BaseNetworkable
 	{
 		public int LivingCount => Players.Where((Player ply) => ply.LifeState == LifeState.Alive).ToList().Count;
 		public List<Player> Players { get; set; } = new();
