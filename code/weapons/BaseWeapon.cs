@@ -95,19 +95,15 @@ namespace guesswho.weapons
 					if (!IsServer || !tr.Entity.IsValid())
 						continue;
 
-					using(Prediction.Off())
-					{
-						float lerp = (tr.Direction * -1).Dot(tr.Normal);
-						Vector3 direction = Vector3.Lerp(tr.Direction, -tr.Normal, 1 - lerp);
-						DamageInfo dInfo = DamageInfo.FromBullet(tr.EndPos, direction * force * 100, damage)
-							.WithFlag(DamageFlags.Bullet)
-							.UsingTraceResult(tr)
-							.WithAttacker(Owner)
-							.WithWeapon(this);
+					float lerp = (tr.Direction * -1).Dot(tr.Normal);
+					Vector3 direction = Vector3.Lerp(tr.Direction, -tr.Normal, 1 - lerp);
+					DamageInfo dInfo = DamageInfo.FromBullet(tr.EndPos, direction * force * 100, damage)
+						.WithFlag(DamageFlags.Bullet)
+						.UsingTraceResult(tr)
+						.WithAttacker(Owner)
+						.WithWeapon(this);
 
-						tr.Entity.TakeDamage(dInfo);
-
-					}
+					tr.Entity.TakeDamage(dInfo);
 				}
 			}
 		}
