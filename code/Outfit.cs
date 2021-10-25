@@ -91,24 +91,20 @@ namespace guesswho
 
 			ModelEntity shirtEnt = new ModelEntity(Shirt, Owner);
 			shirtEnt.SetMaterialGroup(Skin);
-			shirtEnt.Tags.Add("clothing");
 			Clothing.Add(shirtEnt);
 
 			ModelEntity pantsEnt = new ModelEntity(Pants, Owner);
 			ownerModel.SetBodyGroup("Legs", 1);
 			pantsEnt.SetMaterialGroup(Skin);
-			pantsEnt.Tags.Add("clothing");
 			Clothing.Add(pantsEnt);
 			
 
 			ModelEntity shoesEnt = new ModelEntity(Shoes, Owner);
 			ownerModel.SetBodyGroup("Feet", 1);
 			shoesEnt.SetMaterialGroup(Skin);
-			shoesEnt.Tags.Add("clothing");
 			Clothing.Add(shoesEnt);
 
 			ModelEntity hatEnt = new ModelEntity(Hat, Owner);
-			hatEnt.Tags.Add("clothing");
 			Clothing.Add(hatEnt);
 		}
 
