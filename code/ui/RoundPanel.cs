@@ -15,18 +15,10 @@ namespace guesswho.ui
 		{
 			public Player Owner { get; set; }
 			Panel iconPanel;
-			Entity focus;
 
 			public PlayerEntry(Player owner)
 			{
 				Owner = owner;
-				focus = Local.Pawn;
-			}
-
-			[Event("cam.focused")]
-			public void SetFocused(Entity tEnt)
-			{
-				focus = tEnt;
 			}
 
 			public override void Tick()
@@ -48,7 +40,7 @@ namespace guesswho.ui
 				}
 
 				iconPanel.SetClass("active", Owner.LifeState == LifeState.Dead);
-				iconPanel.SetClass("focused", focus == Owner);
+				iconPanel.SetClass("focused", Game.Focused == Owner);
 
 				float healthLerp = 1 - (Owner.Health / 100);
 				iconPanel.Style.BackdropFilterBrightness = Length.Pixels(.5f + (1 - healthLerp) / 2);

@@ -12,6 +12,7 @@ namespace guesswho
 	public partial class Game : Sandbox.Game {
 		public static Game Instance => Current as Game;
 		public static BaseRound CurrentRound => Instance.Round;
+		public static Entity Focused;
 		
 		[Net, Change] private BaseRound Round { get; set;}
 		
@@ -44,6 +45,12 @@ namespace guesswho
 					SetRound(new ErrorRound());
 				}
 			}
+		}
+
+		[Event("cam.focused")]
+		public void SetFocused(Entity tEnt)
+		{
+			Focused = tEnt;
 		}
 
 		public void SetRound(BaseRound round)
