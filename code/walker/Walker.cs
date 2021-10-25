@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace guesswho.walker
 {
-	public partial class Walker : AnimEntity, INamed
+	public partial class Walker : AnimEntity, IHumanoid
 	{
 		public Outfit Outfit { get; set;}
 
@@ -33,6 +33,7 @@ namespace guesswho.walker
 
 			Health = 100;
 		}
+
 
 		public BaseTask CurrentTask;
 		Vector3 inputVelocity;
@@ -123,11 +124,13 @@ namespace guesswho.walker
 			DeleteAsync(5f);
 			base.OnKilled();
 			LifeState = LifeState.Dead;
+
+			Outfit.Clear();
+			Ragdoll wRagdoll = new(this, lastDamage);
+
+			EnableDrawing = false;
 			EnableAllCollisions = false;
 			KillLog.AddEntry(lastDamage, this);
-			EnableDrawing = false;
-
-			Ragdoll wRagdoll = new(this, lastDamage);
 		}
 
 		public override void TakeDamage(DamageInfo info)

@@ -6,18 +6,12 @@ using System.Linq;
 
 namespace guesswho.rounds
 {
-	public abstract partial class BaseRound : Entity
+	public abstract partial class BaseRound : BaseNetworkable
 	{
 		[Net] public TimeSince TimeElapsed { get; set; } = 0;
 		public abstract float RoundLength { get; }
 		public abstract string RoundName { get; }
 		public Panel RoundPanel { get; set; }
-
-		public override void Spawn()
-		{
-			Transmit = TransmitType.Always;
-			base.Spawn();
-		}
 
 		public int TimeLeft {
 			get {

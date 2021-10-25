@@ -30,13 +30,10 @@ namespace guesswho
 			SetInteractsWith(CollisionLayer.WORLD_GEOMETRY);
 			SetInteractsExclude(CollisionLayer.Player | CollisionLayer.Debris);
 
-			foreach (ModelEntity clothing in ent.Children)
+			if(ent is IHumanoid humanoid && humanoid.Outfit != null)
 			{
-				if (!clothing.Tags.Has("clothing"))
-					return;
-
-				ModelEntity nClothing = new(clothing.GetModel().Name, this);
-				nClothing.CopyMaterialGroup(clothing);
+				Outfit outfit = new(this, humanoid.Outfit);
+				outfit.ApplyOutfit();
 			}
 
 			if (dmg.Flags.HasFlag(DamageFlags.Bullet) || dmg.Flags.HasFlag(DamageFlags.PhysicsImpact))

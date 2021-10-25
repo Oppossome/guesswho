@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace guesswho
 {
-	interface INamed
+	interface IHumanoid
 	{
+		public Outfit Outfit { get; set; }
 		public abstract string GetName();
 	}
 }

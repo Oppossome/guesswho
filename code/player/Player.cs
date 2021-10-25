@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace guesswho
 {
-	public partial class Player : Sandbox.Player, INamed
+	public partial class Player : Sandbox.Player, IHumanoid
 	{
 		public Outfit Outfit { get; set;}
 		CitizenAnimator npcAnim;
@@ -98,6 +98,7 @@ namespace guesswho
 
 			KillLog.AddEntry(lastDamage, this);
 			base.OnKilled();
+			Outfit.Clear();
 
 			TimeSinceDied = 0;
 			Controller = null;

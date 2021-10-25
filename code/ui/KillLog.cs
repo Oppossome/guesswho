@@ -49,10 +49,10 @@ namespace guesswho.ui
 
 		public static void AddEntry(DamageInfo dInfo, Entity victim)
 		{
-			if (dInfo.Attacker is not INamed aName)
+			if (dInfo.Attacker is not IHumanoid aName)
 				return;
 
-			if (victim is not INamed vName)
+			if (victim is not IHumanoid vName)
 				return;
 
 			if (dInfo.Weapon is BaseWeapon wep) AddClientEntry(To.Everyone, aName.GetName(), vName.GetName(), wep.Icon);
