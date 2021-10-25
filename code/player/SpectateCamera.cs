@@ -94,6 +94,8 @@ namespace guesswho.player
 
 				int targetSlot = (livingPlayers.IndexOf(spectating) + mDirection) % livingPlayers.Count;
 				if (targetSlot == -1) targetSlot = livingPlayers.Count - 1;
+				if (Spectating == livingPlayers[targetSlot]) return;
+
 				Spectating = livingPlayers[targetSlot];
 			}
 
