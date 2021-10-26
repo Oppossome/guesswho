@@ -43,6 +43,13 @@ namespace guesswho.rounds
 			}
 		}
 
+		public override void OnPlayerDied(Player ply)
+		{
+			base.OnPlayerDied(ply);
+			if(ply.LastAttacker.IsValid())
+				ply.LastAttacker.Health = Math.Min(100, ply.LastAttacker.Health + 40);
+		}
+
 		public override void OnPlayerJoin(Player ply)
 		{
 			ply.Camera = new SpectateCamera();
