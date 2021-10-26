@@ -11,6 +11,7 @@ namespace guesswho.weapons
 		public override int SlotLocation => 3;
 
 		public override float ReloadTime => .5f;
+		public override float SecondaryRate => 1;
 		public override float PrimaryRate => 1;
 		public override int ClipSize => 8;
 
