@@ -18,7 +18,7 @@ namespace guesswho.skills
 			if (Host.IsClient)
 				return;
 
-			for(int i = 0; i < 6; i++)
+			for(int i = 0; i < 3; i++)
 			{
 				Vector3? wPos = NavMesh.GetPointWithinRadius(Owner.Position, 50, 100);
 				
