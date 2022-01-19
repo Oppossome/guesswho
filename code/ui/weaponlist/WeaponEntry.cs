@@ -22,7 +22,7 @@ namespace guesswho.ui
 		{
 			Owner = weapon;
 
-			Style.BackgroundImage = Texture.Load(Owner.Icon);
+			Style.BackgroundImage = Texture.Load( FileSystem.Mounted, Owner.Icon);
 			Style.BackgroundRepeat = BackgroundRepeat.NoRepeat;
 			Style.BackgroundSizeX = Length.Pixels(110);
 			Style.BackgroundSizeY = Length.Pixels(110);

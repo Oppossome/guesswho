@@ -1,4 +1,13 @@
 {
-	"sharedassets": "*.*",
-	"ident": "opossum.guesswho"
+  "SharedAssets": "*.*",
+  "Title": "Guess Who",
+  "Type": "game",
+  "Org": "opossum",
+  "Ident": "guesswho",
+  "Schema": 1,
+  "HasAssets": true,
+  "AssetsPath": "",
+  "HasCode": true,
+  "CodePath": "code",
+  "RootNamespace": "Sandbox"
 }
