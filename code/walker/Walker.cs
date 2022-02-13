@@ -22,7 +22,7 @@ namespace guesswho.walker
 			animator = new(this);
 
 			CollisionGroup = CollisionGroup.Player;
-			EyePos = Position + Vector3.Up * 64;
+			EyePosition = Position + Vector3.Up * 64;
 
 			SetupPhysicsFromCapsule(PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius(72, 8));
 			MoveType = MoveType.MOVETYPE_WALK;
@@ -146,8 +146,8 @@ namespace guesswho.walker
 
 			for (int i = 0; i < count; i++)
 			{
-				Vector3 randomSpawnPos = spawnPoints[Rand.Int(0, spawnPoints.Count - 1)].Position;
-				Vector3? potentialSpawn = NavMesh.GetPointWithinRadius(randomSpawnPos, 500, 3500);
+				Vector3 randomSpawnPosition = spawnPoints[Rand.Int(0, spawnPoints.Count - 1)].Position;
+				Vector3? potentialSpawn = NavMesh.GetPointWithinRadius(randomSpawnPosition, 500, 3500);
 
 				if (potentialSpawn is not Vector3 spawnLocation)
 					return;

@@ -22,10 +22,10 @@ namespace guesswho.skills
 			Walker rWalker = walkers[Rand.Int(0, walkers.Count - 1)];
 			rWalker.SwapOutfits(Owner);
 
-			Vector3 ourPos = Owner.Position;
-			Vector3 walkerPos = rWalker.Position;
-			Owner.Position = walkerPos;
-			rWalker.Position = ourPos;
+			Vector3 ourPosition = Owner.Position;
+			Vector3 walkerPosition = rWalker.Position;
+			Owner.Position = walkerPosition;
+			rWalker.Position = ourPosition;
 		}
 	}
 }

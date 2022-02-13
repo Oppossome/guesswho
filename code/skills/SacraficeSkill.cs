@@ -23,9 +23,9 @@ namespace guesswho.skills
 		{
 			base.OnEnd();
 
-			Vector3 effectPos = Owner.Position + Vector3.Up * 32;
-			Sound.FromWorld("rust_pumpshotgun.shootdouble", effectPos);
-			Particles.Create("particles/explosion", effectPos);
+			Vector3 effectPosition = Owner.Position + Vector3.Up * 32;
+			Sound.FromWorld("rust_pumpshotgun.shootdouble", effectPosition);
+			Particles.Create("particles/explosion", effectPosition);
 
 			if (Host.IsClient) return;
 

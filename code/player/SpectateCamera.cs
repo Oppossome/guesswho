@@ -23,8 +23,8 @@ namespace guesswho.player
 				Viewer = null;
 
 				spectating = value;
-				Pos = spectating.EyePos;
-				Rot = spectating.EyeRot;
+				Position = spectating.EyePosition;
+				Rotation = spectating.EyeRotation;
 				Event.Run("cam.focused", spectating);
 			}
 		}
@@ -59,16 +59,16 @@ namespace guesswho.player
 			}
 
 			float camDistance = isZoomed ? 100 : 0;
-			TraceResult tr = Trace.Ray(spectating.EyePos, spectating.EyePos + spectating.EyeRot.Forward * -camDistance)
+			TraceResult tr = Trace.Ray(spectating.EyePosition, spectating.EyePosition + spectating.EyeRotation.Forward * -camDistance)
 				.Ignore(spectating.ActiveChild)
 				.Ignore(spectating)
 				.Size(2)
 				.Run();
 
-			Pos = Pos.LerpTo(tr.EndPos, Time.Delta * 10);
-			Rot = Rotation.Lerp(Rot, spectating.EyeRot, Time.Delta * 10);
+			Position = Position.LerpTo(tr.EndPos, Time.Delta * 10);
+			Rotation = Rotation.Lerp(Rotation, spectating.EyeRotation, Time.Delta * 10);
 
-			float camDist = Vector3.DistanceBetween(spectating.EyePos, Pos);
+			float camDist = Vector3.DistanceBetween(spectating.EyePosition, Position);
 			float alpha = Math.Clamp((camDist - 45) / 26, 0, 1);
 			Viewer = (camDist < 16 ? spectating : null);
 			setAlpha(spectating, alpha);

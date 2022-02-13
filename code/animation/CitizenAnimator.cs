@@ -28,7 +28,7 @@ namespace guesswho.animation
 			}
 
 			lookDir = Vector3.Lerp(lookDir, velocity.WithZ(0) * 1000, Time.Delta * 100);
-			animHelper.WithLookAt(Owner.EyePos + lookDir);
+			animHelper.WithLookAt(Owner.EyePosition + lookDir);
 
 			animHelper.WithWishVelocity(wishVelocity);
 			animHelper.WithVelocity(velocity);

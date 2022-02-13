@@ -28,15 +28,15 @@ namespace guesswho
 		{
 			Player localPly = Local.Pawn as Player;
 
-			TraceResult tr = Trace.Ray(localPly.EyePos, localPly.EyePos + localPly.EyeRot.Forward * -wishZoom)
+			TraceResult tr = Trace.Ray(localPly.EyePosition, localPly.EyePosition + localPly.EyeRotation.Forward * -wishZoom)
 				.Ignore(localPly)
 				.Size(2)
 				.Run();
 
-			Rot = localPly.EyeRot;
-			Pos = tr.EndPos;
+			Rotation = localPly.EyeRotation;
+			Position = tr.EndPos;
 
-			float camDist = Vector3.DistanceBetween(localPly.EyePos, tr.EndPos);
+			float camDist = Vector3.DistanceBetween(localPly.EyePosition, tr.EndPos);
 			Alpha = Math.Clamp((camDist - AlphaEnd) / (AlphaStart - AlphaEnd), 0, 1);
 			Viewer = (camDist < AlphaEnd ? localPly : null);
 

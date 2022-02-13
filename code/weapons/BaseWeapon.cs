@@ -80,11 +80,11 @@ namespace guesswho.weapons
 
 			for(int i = 0; i < count; i++)
 			{
-				Vector3 forward = Owner.EyeRot.Forward;
+				Vector3 forward = Owner.EyeRotation.Forward;
 				forward += (rVec(rand) + rVec(rand) + rVec(rand) + rVec(rand)) * spread * .25f;
 				forward = forward.Normal;
 
-				foreach (TraceResult tr in TraceBullet(Owner.EyePos, Owner.EyePos + forward * 5000))
+				foreach (TraceResult tr in TraceBullet(Owner.EyePosition, Owner.EyePosition + forward * 5000))
 				{
 					if (!Game.CurrentRound.CanPlayerDamage(Owner as Player, tr))
 						continue;

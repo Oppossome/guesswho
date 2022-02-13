@@ -67,23 +67,23 @@ namespace guesswho
 		
 		}
 
-		public override void OnAnimEventFootstep(Vector3 pos, int foot, float volume)
+		public override void OnAnimEventFootstep(Vector3 Position, int foot, float volume)
 		{
 			if (Host.IsServer) return;
 
 			if (IsLocalPawn)
 			{
-				base.OnAnimEventFootstep(pos, foot, 0.5f);
+				base.OnAnimEventFootstep(Position, foot, 0.5f);
 				return;
 			}
 
-			float stepDistance = Vector3.DistanceBetween(Input.Position, pos);
+			float stepDistance = Vector3.DistanceBetween(Input.Position, Position);
 			float stepVolume = (float)Math.Pow(1 - (stepDistance / 512), .5);
 
 			if (stepVolume < 0)
 				return;
 
-			base.OnAnimEventFootstep(pos, foot, stepVolume);
+			base.OnAnimEventFootstep(Position, foot, stepVolume);
 		}
 
 		DamageInfo lastDamage;
